@@ -14,12 +14,7 @@ function App() {
 
   },[]);
 
-  useEffect(()=>{
-    api.get('/repositories').then(response => {
-     setRepositories(response.data);
-    });
-
-  },[]);
+ 
 
   async function handleAddRepository() {
 
@@ -40,9 +35,9 @@ function App() {
     const response = await api.delete(`/repositories/${id}`);
 
     if(response.status === 204){
-    const CurrentRepositories = repositories.filter(repository => repository.id !==id);
+    const repository = repositories.filter(repository => repository.id !==id);
 
-    setRepositories(CurrentRepositories);
+    setRepositories(repository);
     }
   }
 
